@@ -43,7 +43,10 @@
     "source/sass/**/*.scss"
   ],
   "engines": {
-    "node": "16.13.0"
+    "node": "16.20.2"
   },
-  "type": "module"
+  "type": "module",
+  "volta": {
+    "node": "16.20.2"
+  }
 }
