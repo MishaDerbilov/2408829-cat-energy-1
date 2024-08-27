@@ -60,24 +60,24 @@ return gulp.src('source/img/**/*.{png,jpg}')
 }
 
 // SVG
-const svg = () =>
-gulp.src(['source/img/*.svg','source/img/sprite.svg', 'source/img/**/*.svg', 'source/img/icons/*.svg'])
-  .pipe(svgo())
-  .pipe(gulp.dest('build/img'));const sprite = () => {
-  return gulp.src('source/img/**/*.svg')
-    .pipe(svgo())
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
-    .pipe(rename('sprite.svg'))
-    .pipe(gulp.dest('build/img'));
-}
+//const svg = () =>
+//gulp.src(['source/img/*.svg','source/img/sprite.svg', 'source/img/**/*.svg', 'source/img/icons/*.svg'])
+//  .pipe(svgo())
+//  .pipe(gulp.dest('build/img'));const sprite = () => {
+//  return gulp.src('source/img/**/*.svg')
+//    .pipe(svgo())
+//    .pipe(svgstore({
+//      inlineSvg: true
+//    }))
+//    .pipe(rename('sprite.svg'))
+//    .pipe(gulp.dest('build/img'));
+//}
 
 // Copy
 const copy = (done) => {
 gulp.src([
-  'source/fonts/oswald/*.{woff2,woff}',
-  'source/fonts/lato/*.{woff2,woff}',
+  'source/fonts/**/*.{woff2,woff}',
+  'source/img/**/*.svg',
   'source/*.ico',
 ], {
   base: 'source'
@@ -126,8 +126,6 @@ clean,
     styles,
     html,
     scripts,
-    svg,
-    sprite,
     createWebp
   ),
 );
@@ -141,8 +139,6 @@ export default gulp.series(
     styles,
     html,
     scripts,
-    svg,
-    sprite,
     createWebp
   ),
   gulp.series(
