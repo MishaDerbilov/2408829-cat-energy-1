@@ -34,7 +34,7 @@ return gulp.src('source/*.html')
 
 // Scripts
 const scripts = () => {
-return gulp.src('source/js/script.js')
+return gulp.src('source/js/*.js')
   .pipe(gulp.dest('build/js'))
   .pipe(browser.stream());
 }
@@ -61,10 +61,10 @@ return gulp.src('source/img/**/*.{png,jpg}')
 
 // SVG
 const svg = () =>
-gulp.src(['source/img/*.svg', '!source/img/icons/*.svg'])
+gulp.src(['source/img/*.svg','source/img/sprite.svg', 'source/img/**/*.svg', 'source/img/icons/*.svg'])
   .pipe(svgo())
   .pipe(gulp.dest('build/img'));const sprite = () => {
-  return gulp.src('source/img/icons/*.svg')
+  return gulp.src('source/img/**/*.svg')
     .pipe(svgo())
     .pipe(svgstore({
       inlineSvg: true
@@ -76,7 +76,8 @@ gulp.src(['source/img/*.svg', '!source/img/icons/*.svg'])
 // Copy
 const copy = (done) => {
 gulp.src([
-  'source/fonts/*.{woff2,woff}',
+  'source/fonts/oswald/*.{woff2,woff}',
+  'source/fonts/lato/*.{woff2,woff}',
   'source/*.ico',
 ], {
   base: 'source'
